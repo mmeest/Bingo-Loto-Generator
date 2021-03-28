@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo</title>
+    <style>
+        body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            background-color: slategray;
+        }
+        h1{
+            font-size: 2em;
+        }
+        button{
+            font-size: 1.5em;
+            padding: 0.3em;
+            border-radius: 18px;
+            background-color: blue;
+            color: beige;
+        }
+        #lotopilet{
+            background-color: pink;
+            display: inline-block;
+            padding: 0.6em;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        td{
+            width: 2em;
+            height: 2em;
+            border: 3px solid black;
+        }
+        #\30 1, #\30 5, #\34 1, #\34 5, #\32 3, #\31 2, #\31 4, #\33 2, #\33 4{
+            background-color: rgb(230, 106, 127);
+        }
+    </style>
+        <script>
+            var filler = [];                        // massiiv kuhu talletatakse korraga 5 numbrit(1 veerg)
+            var nurgad = [ '01', '05', '41', '45' ];
+            var diagonaal1 = [ '01', '12', '23', '34', '45']; 
+            var diagonaal2 = [ '41', '32', '23', '14', '05'];
+            var luckyNumber;                        // juhuslikult genereeritav number
+            var keskruut;
+            function getValues(inputValues){        // väljadelt väärtuste kättesaamisfunktsioon
+                var printOut = "";
+                for(var i = 0; i < inputValues.length; i++){
+                    printOut += document.getElementById(inputValues[i]).textContent + "  ";
+                }
+                return printOut;
+            }
+            function generate(){
+                for(var i = 0; i<5; i++){           // iga tsükkel täitab ühe veeru
+                    for(var j = 1; j<=5; j++){      // iga tsükkel leiab veergu ühe numbri
+                        luckyNumber = Math.floor(Math.random() * 15) + 1 + (i * 15);
+                        if(filler.includes(luckyNumber)){
+                            j--                     // kui genereeritud number on juba massiivis
+                        }else{
+                            filler.push(luckyNumber);
+                        }                           // genereeritud number lisatakse massiivi
+                    }
+                    for(var k = 1; k <= 5; k++ ){   // iga tsükkel täidab veergu ühe välja
+                        document.getElementById(i.toString() + "" + k.toString()).innerHTML = filler[k - 1];
+                    }
+                    filler = []                     // numbrite massiiv puhastatakse uue tsükli tarvis
+                }      
+            document.getElementById("keskruut").innerHTML = "Keskruut: " + document.getElementById("23").textContent;
+            document.getElementById("nurgad").innerHTML = "Nurgad: " + getValues(nurgad);
+            document.getElementById("diagonaal1").innerHTML = "Diagonaal1: " + getValues(diagonaal1);
+            document.getElementById("diagonaal2").innerHTML = "Diagonaal2: " + getValues(diagonaal2);
+            }
+        </script>
+</head>
+<body>
+    <h1>Bingo Loto</h1>
+    <div id="lotopilet">
+        <table>
+            <tr><th>B</th><th>I</th><th>N</th><th>G</th><th>O</th></tr>
+            <tr><td id="01"></td><td id="11"></td><td id="21"></td><td id="31"></td><td id="41"></td></tr>
+            <tr><td id="02"></td><td id="12"></td><td id="22"></td><td id="32"></td><td id="42"></td></tr>
+            <tr><td id="03"></td><td id="13"></td><td id="23"></td><td id="33"></td><td id="43"></td></tr>
+            <tr><td id="04"></td><td id="14"></td><td id="24"></td><td id="34"></td><td id="44"></td></tr>
+            <tr><td id="05"></td><td id="15"></td><td id="25"></td><td id="35"></td><td id="45"></td></tr>
+        </table>
+    </div>
+    <p><button type="button" onclick="generate()">Genereeri pilet</button></p>
+    <p><div id="keskruut"></div></p>
+    <p><div id="nurgad"></div></p>
+    <p><div id="diagonaal1"></div></p>
+    <p><div id="diagonaal2"></div></p>
+</body>
+</html>
