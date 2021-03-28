@@ -9,7 +9,7 @@
 
 ### Main page
 
-<p align="center"><img src="Screenshot.png" width="450px"></p>
+<p align="center"><img src="Screenshot.png" width="220px"></p>
 
 ### Features
 * Single page app with auto generated Bingo ticket
