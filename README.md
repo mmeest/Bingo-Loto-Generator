@@ -12,6 +12,8 @@
 <p align="center"><img src="Screenshot.png" width="220px"></p>
 
 ### Features
-* Single page app with auto generated Bingo ticket
-* Diagonals highlighted color
-* Text output for corners, diagonals and center cell
+* *Single page app with auto generated Bingo ticket*
+* *Diagonals highlighted color*
+* *Text output for corners, diagonals and center cell*
+
+# HAPPY CODING !!! :)
